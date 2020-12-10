@@ -19,7 +19,7 @@ public class Connection {
         try {
             this.serverSocket = new ServerSocket(defaultPort);
             CalcServerRunner.online = true;
-            System.out.print("Waiting for a client...");
+            System.out.println("Waiting for a client...");
 
             this.clientSocket = serverSocket.accept();
             connected = true;
