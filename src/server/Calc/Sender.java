@@ -13,6 +13,7 @@ public class Sender {
     public void send(String displayText) {
         try {
             connection.getOutputStream().writeUTF(displayText);
+            System.out.println("Отправляю " + displayText);
         } catch (IOException e) {
             e.printStackTrace();
         }
