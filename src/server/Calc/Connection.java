@@ -8,20 +8,17 @@ public class Connection {
 
     private boolean connected;
 
-    private ServerSocket serverSocket;
-    private Socket clientSocket;
-
     DataInputStream inputStream;
     DataOutputStream outputStream;
 
     public Connection(int defaultPort) {
 
         try {
-            this.serverSocket = new ServerSocket(defaultPort);
+            ServerSocket serverSocket = new ServerSocket(defaultPort);
             CalcServerRunner.online = true;
             System.out.println("Waiting for a client...");
 
-            this.clientSocket = serverSocket.accept();
+            Socket clientSocket = serverSocket.accept();
             connected = true;
             System.out.println("Got a connection...");
 
@@ -38,14 +35,6 @@ public class Connection {
 
     public boolean isConnected() {
         return connected;
-    }
-
-    public ServerSocket getServerSocket() {
-        return serverSocket;
-    }
-
-    public Socket getClientSocket() {
-        return clientSocket;
     }
 
     public DataInputStream getInputStream() {
