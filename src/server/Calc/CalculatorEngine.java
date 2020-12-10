@@ -6,8 +6,6 @@ import java.util.List;
 
 public class CalculatorEngine {
 
-
-
     private final StringBuilder input;
     private final StringBuilder displayText;
     private final List<Character> operationSequence;
@@ -17,7 +15,7 @@ public class CalculatorEngine {
     private Character lastOperation;
     private Character lastButtonPressed;
 
-    Sender sender;
+    private final Sender sender;
 
     public CalculatorEngine(Sender sender) {
         this.sender = sender;
@@ -31,12 +29,6 @@ public class CalculatorEngine {
     public void receiveButtonText(String buttonText) {
         handleInput(buttonText.charAt(0));
     }
-
-//    @Override
-//    public void actionPerformed(ActionEvent event) {
-//        JButton clickedButton= (JButton)event.getSource();
-//        handleInput(clickedButton);
-//    }
 
     private void calculate() {
 
@@ -100,8 +92,6 @@ public class CalculatorEngine {
         return result;
     }
 
-
-
     private void display(Object text) {
         displayText.append(text);
         sender.send(cutString(displayText));
@@ -124,8 +114,6 @@ public class CalculatorEngine {
     }
 
     private void handleInput(Character buttonText) {
-
-//        Character buttonText = clickedButton.getText().charAt(0);
 
         if (isClearButton(buttonText)) {
             handleClear();
@@ -301,6 +289,7 @@ public class CalculatorEngine {
         } else return string;
 
     }
+
     private Double sbToDouble(StringBuilder stringBuilder) {
         return Double.parseDouble(stringBuilder.toString());
     }
